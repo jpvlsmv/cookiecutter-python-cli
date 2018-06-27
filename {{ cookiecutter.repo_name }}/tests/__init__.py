@@ -1,1 +1,1 @@
-
+''' Module automatic load '''

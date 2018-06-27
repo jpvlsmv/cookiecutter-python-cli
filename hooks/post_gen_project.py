@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import os
+from subprocess import run
 
-
-def main():
+def addback_newlines():
     """Adds newlines back to every file, to make them PEP8 compliant."""
     root_path = os.getcwd()
     for dirpath, dirnames, filenames in os.walk(root_path):
@@ -16,6 +16,14 @@ def main():
                     with open(path, 'wb') as f:
                         f.write((contents + b'\n').lstrip())
 
+def initialize_repo():
+    try:
+        run("git init".split())
+        run(("git remote add github " +
+                   "https://{{ cookiecutter.github_username }}@github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}.git").split())
+    except CalledProcessError as e:
+        print('Repository initialization failed' + e)
 
 if __name__ == '__main__':
-    main()
+    addback_newlines()
+    initialize_repo()
