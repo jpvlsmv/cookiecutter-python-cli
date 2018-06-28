@@ -1,0 +1,3 @@
+requirements:
+    - "{{ cookiecutter.repo_name }}/requirements.txt"
+    - "{{ cookiecutter.repo_name }}/requirements_dev.txt"
