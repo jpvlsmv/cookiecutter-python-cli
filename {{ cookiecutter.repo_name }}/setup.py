@@ -1,9 +1,21 @@
 """
 {{ cookiecutter.project_short_description }}
+
+For dev/build environment, pip install -e .[dev]
+Testing is done in the qa environment pip install -e .[qa]
 """
 from setuptools import find_packages, setup
 
-dependencies = ['click']
+runtime_dependencies = ['click']
+dev_dependencies  = [
+            'bump2version',
+        ]
+qa_dependencies = [
+            'pylint',putty
+    
+            'flake8',
+            'tox',
+        ]
 
 setup(
     name='{{ cookiecutter.pypi_name }}',
@@ -18,7 +30,11 @@ setup(
     include_package_data=True,
     zip_safe=False,
     platforms='any',
-    install_requires=dependencies,
+    install_requires=runtime_dependencies,
+    extras_require={
+        'dev': dev_dependencies
+        'qa': dev_dependencies + qa_dependencies
+    },
     entry_points={
         'console_scripts': [
             '{{ cookiecutter.script_name }} = {{ cookiecutter.package_name }}.cli:main',
