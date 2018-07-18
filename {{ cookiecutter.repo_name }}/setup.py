@@ -6,7 +6,9 @@ Testing is done in the qa environment pip install -e .[qa]
 """
 from setuptools import find_packages, setup
 
-runtime_dependencies = ['click']
+runtime_dependencies = [
+            'click',
+        ]
 dev_dependencies  = [
             'bump2version',
         ]
@@ -14,6 +16,7 @@ qa_dependencies = [
             'pylint',    
             'flake8',
             'tox',
+            'pytest'
         ]
 
 setup(
@@ -32,8 +35,8 @@ setup(
     install_requires=runtime_dependencies,
     extras_require={
         'dev': dev_dependencies,
-        'qa': dev_dependencies + qa_dependencies
     },
+    tests_require=qa_dependencies,
     entry_points={
         'console_scripts': [
             '{{ cookiecutter.script_name }} = {{ cookiecutter.package_name }}.cli:main',
