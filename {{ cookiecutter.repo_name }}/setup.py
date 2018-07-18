@@ -11,8 +11,7 @@ dev_dependencies  = [
             'bump2version',
         ]
 qa_dependencies = [
-            'pylint',putty
-    
+            'pylint',    
             'flake8',
             'tox',
         ]
@@ -32,7 +31,7 @@ setup(
     platforms='any',
     install_requires=runtime_dependencies,
     extras_require={
-        'dev': dev_dependencies
+        'dev': dev_dependencies,
         'qa': dev_dependencies + qa_dependencies
     },
     entry_points={
@@ -57,7 +56,6 @@ setup(
         'Operating System :: Unix',
         'Operating System :: Microsoft :: Windows',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 3',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ]
