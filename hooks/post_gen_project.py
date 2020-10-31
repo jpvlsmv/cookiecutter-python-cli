@@ -24,6 +24,14 @@ def initialize_repo():
     except CalledProcessError as e:
         print('Repository initialization failed' + e)
 
+def initialize_venv():
+    try:
+        run("python -m venv .venv".split())
+        run("poetry run pip install nox".split())
+    except CalledProcessError as e:
+        print('Virtual Environment setup failed' + e)
+        
 if __name__ == '__main__':
     addback_newlines()
     initialize_repo()
+    initialize_venv()
